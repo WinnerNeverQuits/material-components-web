@@ -1,0 +1,51 @@
+<nav>
+	<a href="/html/">HTML</a> | <a href="/css/">CSS</a> | <a href="/js/">JavaScript</a>
+</nav>
+
+<style>
+	nav {
+		/* margin-left: -100%; */
+		transition: margin-left 0.5s;
+	}
+	nav .active {
+		margin-left: 0;
+	}
+</style>
+
+<script>
+	var urls = ['http://date.jsontest.com/', 'http://error.url.com','http://date.jsontest.com/'];
+
+	urls.forEach(makeRequest);
+
+	function makeRequest(value) {
+		fetch(value)
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(value) {
+				console.log(value);
+			});
+	}
+</script>
+
+
+<!-- 
+
+ReadFileSync in a node express/webserver will tie up the single thread loop while I/O is performed. 
+
+let myFile;
+app.get ( '/' , function ( req , res ) {
+myFile = await require ( 'fs' ). readFileSync ( '35df8h/user-data.txt' , 'utf8' );
+if (!myFile) {
+        // handle file not found
+		res.statusMessage = `File does not exist`;
+		res.sendStatus(httpConstants.HTTP_STATUS_NOT_FOUND);
+		return;
+    }
+res.send(myFile);
+});
+    
+-->
