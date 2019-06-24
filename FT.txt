@@ -1,0 +1,51 @@
+Answer A:
+
+<script>
+	var urls = ['http://date.jsontest.com/', 'http://date.jsontest.com/'];
+	var promises = [];
+
+	function makeRequest(url) {
+		return fetch(url);
+	}
+
+	urls.forEach(function(url) {
+		promises.push(makeRequest(url));
+	});
+
+	Promise.all(promises)
+		.then(function(responses) {
+			//execute some logic on the result of all the calls
+			console.log(responses);
+		})
+		.catch(error => {
+			console.log(error.message);
+		});
+		
+</script>
+
+_____________________________________________________________________________
+
+Answer B:
+
+ReadFileSync in a node express/webserver will tie up the single thread loop while I/O is performed. Use readFile with aync await or promises.
+
+let myFile;
+app.get ( '/' , function ( req , res ) {
+myFile = await require ( 'fs' ). readFile( '35df8h/user-data.txt' , 'utf8' );
+if (!myFile) {
+        // handle file not found
+		res.statusMessage = `File does not exist`;
+		res.sendStatus(httpConstants.HTTP_STATUS_NOT_FOUND);
+		return;
+    }
+res.send(myFile);
+});
+
+
+_____________________________________________________________________________
+
+Answer C:
+
+With transitions FPS are clunky because they have the browser creating layouts each time which will affect all of their children. Use the transform properties which affect Composite(last step in rendering). 
+
+_____________________________________________________________________________
